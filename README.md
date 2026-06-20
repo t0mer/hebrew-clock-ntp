@@ -11,6 +11,37 @@ setup portal — no credentials are hardcoded.
 
 ---
 
+## Screenshots
+
+### The clock
+
+The time spelled out in vocalized Hebrew, with the date on the top row.
+
+![Hebrew word clock on the e-paper display](assets/screenshots/device-clock.jpeg)
+
+### First-boot WiFi setup
+
+When no credentials are stored, the e-paper prompts you to join the device's
+own setup access point.
+
+![WiFi setup prompt on the e-paper display](assets/screenshots/device-wifi-setup.jpeg)
+
+### Captive setup portal
+
+Join the `HebrewClock` network and the portal at `192.168.4.1` lets you pick
+your WiFi, enter the password, and choose the top-row date mode.
+
+![Captive WiFi setup portal](assets/screenshots/setup-portal.jpeg)
+
+### Status page
+
+Once connected, the device serves a status page with the live time, its IP, the
+date-mode toggle, and a "Reconfigure WiFi" button.
+
+![Status web page](assets/screenshots/status-page.jpeg)
+
+---
+
 ## Features
 
 - **Time spelled out in Hebrew words** with full niqud (vowel marks), laid out
