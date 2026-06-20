@@ -47,6 +47,11 @@ EPaper epaper = EPaper();
 #define AP_SSID     "HebrewClock"
 #define AP_PASSWORD ""         // empty = open network
 
+// ── Factory reset ─────────────────────────────────────────────────────
+// Uncomment, flash once to wipe all stored settings (WiFi creds + date
+// mode) from NVS, then comment it out again and re-flash for normal use.
+// #define RESET_SETTINGS 1
+
 // ── Timezone (Israel: UTC+2 standard, UTC+3 DST) ─────────────────────
 const char* timeZone = "IST-2IDT,M3.4.4/26,M10.5.0";
 
@@ -152,6 +157,15 @@ void setup() {
   // Load persisted settings before the first draw so the top row uses the
   // chosen date mode immediately.
   prefs.begin("hebtime", false);
+
+#ifdef RESET_SETTINGS
+  // Wipe stored WiFi credentials and date mode, then continue with defaults
+  // (this boot opens the setup portal). Remember to disable the flag and
+  // re-flash afterwards, or every boot will clear settings again.
+  prefs.clear();
+  Serial.println("RESET_SETTINGS — cleared stored settings from NVS");
+#endif
+
   showHebrewDate = (prefs.getUChar("datemode", 0) == 1);
   Serial.printf("dateMode = %s\n", showHebrewDate ? "Hebrew" : "Gregorian");
 
